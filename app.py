@@ -1,7 +1,6 @@
 import streamlit as st
 from authlib.integrations.requests_client import OAuth2Session
 
-# Leer secretos
 client_id = st.secrets["client_id"]
 client_secret = st.secrets["client_secret"]
 
