@@ -38,7 +38,7 @@ def login_box():
 
     st.markdown(f"<a class='google-button' href='{auth_url}'>Iniciar sesión con Google</a>", unsafe_allow_html=True)
 
-    query_params = st.experimental_get_query_params()
+    query_params = st.query_params
     if "code" in query_params:
         code = query_params["code"][0]
         returned_state = query_params.get("state", [None])[0]
@@ -50,7 +50,7 @@ def login_box():
         oauth = create_oauth_session(state=returned_state)
         token = oauth.fetch_token(token_endpoint, code=code, client_secret=client_secret)
         st.session_state.token = token
-        st.experimental_set_query_params()
+        st.query_params.clear()
 
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -64,4 +64,4 @@ def get_user_info():
 # Cerrar sesión
 def logout():
     st.session_state.token = None
-    st.experimental_set_query_params()
+    st.query_params.clear()

@@ -2,6 +2,7 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 import auth  # módulo de autenticación
 
+
 def main():
     # Asegurar estados iniciales
     if "token" not in st.session_state:
@@ -19,7 +20,7 @@ def main():
     if userinfo:
         name = userinfo.get("name")
         email = userinfo.get("email")
-        st.success(f"Bienvenida, {name} ({email}) 👋")
+        st.success(f"Bienvenida, {name} ({email}) ")
 
         if st.button("Cerrar sesión"):
             auth.logout()
@@ -45,5 +46,5 @@ def main():
     elif menu == "Configuración":
         st.info("⚙️ Configuración por implementar.")
 
-if __name__ == "__main__":
+if name == "main":
     main()
