@@ -4,7 +4,7 @@ from authlib.integrations.requests_client import OAuth2Session
 # Configuración OAuth
 client_id = st.secrets["client_id"]
 client_secret = st.secrets["client_secret"]
-redirect_uri = "https://appcmch-k6hwej2bopa62i4fq7jyr6.streamlit.app/"
+redirect_uri = "https://cmch-upchic2.streamlit.app/"
 authorization_endpoint = "https://accounts.google.com/o/oauth2/v2/auth"
 token_endpoint = "https://oauth2.googleapis.com/token"
 userinfo_endpoint = "https://openidconnect.googleapis.com/v1/userinfo"
