@@ -1,9 +1,6 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 import auth
-import vista_datos
-import base_datos
-import generar_qr
 
 def main():
     if "token" not in st.session_state:
