@@ -1,3 +1,4 @@
 streamlit
 authlib
 streamlit_option_menu
+streamlit-auth0-component
