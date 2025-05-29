@@ -1,12 +1,20 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
-import auth  # <--- Importa el módulo de autenticación
+import auth  # módulo de autenticación
 
 def main():
-    if not st.session_state.token:
+    # Asegurar estados iniciales
+    if "token" not in st.session_state:
+        st.session_state.token = None
+    if "oauth_state" not in st.session_state:
+        st.session_state.oauth_state = None
+
+    # Mostrar login si no hay token
+    if not st.session_state.get("token"):
         auth.login_box()
         return
 
+    # Obtener datos del usuario
     userinfo = auth.get_user_info()
     if userinfo:
         name = userinfo.get("name")
@@ -17,7 +25,7 @@ def main():
             auth.logout()
             return
 
-    # Sidebar
+    # Sidebar de navegación
     with st.sidebar:
         menu = option_menu(
             "Menú principal",
@@ -27,7 +35,7 @@ def main():
             default_index=0
         )
 
-    # Rutas
+    # Navegación
     if menu == "Inicio":
         vista_datos.mostrar_inicio()
     elif menu == "Ver Base de Datos":
@@ -37,5 +45,5 @@ def main():
     elif menu == "Configuración":
         st.info("⚙️ Configuración por implementar.")
 
-if __name__ == "__main__":
+if name == "main":
     main()
