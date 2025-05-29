@@ -45,5 +45,5 @@ def main():
     elif menu == "Configuración":
         st.info("⚙️ Configuración por implementar.")
 
-if name == "main":
+if __name__ == "__main__":
     main()
