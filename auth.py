@@ -9,7 +9,17 @@ authorization_endpoint = "https://accounts.google.com/o/oauth2/v2/auth"
 token_endpoint = "https://oauth2.googleapis.com/token"
 userinfo_endpoint = "https://openidconnect.googleapis.com/v1/userinfo"
 
-# Crear sesión OAuth
+# Usuarios autorizados
+AUTHORIZED_USERS = {
+    "jear142003@gmail.com": "Ingeniero Clínico"
+}
+
+def is_authorized_user(email):
+    return email in AUTHORIZED_USERS
+
+def get_user_role(email):
+    return AUTHORIZED_USERS.get(email, None)
+
 def create_oauth_session(state=None, token=None):
     return OAuth2Session(
         client_id,
@@ -20,7 +30,6 @@ def create_oauth_session(state=None, token=None):
         token=token,
     )
 
-# Caja de login
 def login_box():
     if "oauth_state" not in st.session_state:
         st.session_state.oauth_state = None
@@ -54,14 +63,12 @@ def login_box():
 
     st.markdown("</div>", unsafe_allow_html=True)
 
-# Obtener datos del usuario
 def get_user_info():
     if not st.session_state.get("token"):
         return None
     oauth = create_oauth_session(token=st.session_state.token)
     return oauth.get(userinfo_endpoint).json()
 
-# Cerrar sesión
 def logout():
     st.session_state.token = None
     st.query_params.clear()
