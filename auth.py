@@ -6,7 +6,7 @@ client_id = st.secrets["client_id"]
 client_secret = st.secrets["client_secret"]
 
 # Endpoints de Google OAuth
-redirect_uri = "https://appcmch-uvyn2alfsjhgmxjdbd6sar.streamlit.app/"
+redirect_uri = "https://appcmch-k6hwej2bopa62i4fq7jyr6.streamlit.app/"
 authorization_endpoint = "https://accounts.google.com/o/oauth2/v2/auth"
 token_endpoint = "https://oauth2.googleapis.com/token"
 userinfo_endpoint = "https://openidconnect.googleapis.com/v1/userinfo"
