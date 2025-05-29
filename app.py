@@ -36,7 +36,7 @@ def login():
 
     st.markdown(f"<a class='google-button' href='{auth_url}'>Iniciar sesi贸n con Google</a>", unsafe_allow_html=True)
 
-    query_params = st.experimental_get_query_params()
+    query_params = st.query_params()
     if "code" in query_params:
         code = query_params["code"][0]
         returned_state = query_params.get("state", [None])[0]
